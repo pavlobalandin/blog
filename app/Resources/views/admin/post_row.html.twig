@@ -1,0 +1,7 @@
+<tr>
+	<td>{{ post.id }}</td>
+	<td><a href="{{ path('edit_page', {'id': post.id}) }}">{{ post.title }}</a></td>
+	<td>{{ post.date|date('Y-m-d H:i:s')  }}</td>
+	<td>{{ post.views }}</td>
+	<td>{{ post.isActive }}</td>
+</tr>

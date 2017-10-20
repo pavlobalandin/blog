@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{%  block title %}Blog Admin{% endblock %}
+{% block body %}
+	<div id="wrapper">
+		<div id="container">
+			{%  if info %}
+				<h2 class="info">{{ info }}</h2>
+			{% endif %}
+
+			<div id="controls">
+				<a href="{{ path('edit_page') }}" class="button">Create new post</a>
+			</div>
+
+			<div id="pages">
+				<table class="pages_list">
+					<tr>
+						<td>Id</td>
+						<td class="title">Title</td>
+						<td>Date</td>
+						<td>Views</td>
+						<td>isActive</td>
+					</tr>
+					{% for post in posts %}
+						{{ include('admin/post_row.html.twig', { 'post': post }) }}
+					{% endfor %}
+				</table>
+			</div>
+
+			{{ include('admin/paging.html.twig', { 'paging_items': paging_items }) }}
+
+		</div>
+	</div>
+{% endblock %}
+
+{% block stylesheets %}
+	<style>
+		table.pages_list td {
+			padding: 5pt;
+		}
+		table.pages_list td.title {
+			width: 40%;
+		}
+	</style>
+{% endblock %}

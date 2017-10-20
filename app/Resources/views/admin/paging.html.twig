@@ -1,0 +1,5 @@
+<ul id="pagination">
+	{% for paging_item in paging_items %}
+		<li><a href="{{ paging_item.link }}" {% if paging_item.active %}class="active"{% endif %}>{{ paging_item.title}}</a></li>
+	{%  endfor %}
+</ul>

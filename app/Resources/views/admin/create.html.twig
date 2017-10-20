@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+<div id="wrapper">
+	<div id="container">
+		<h1>{{ title }}</h1>
+		<a href="{{ path('admin_list') }}">Back to list</a>
+		{%  if error %}
+			<h2 class="error">{{ error }}</h2>
+		{% endif %}
+		{%  if info %}
+			<h2 class="info">{{ info }}</h2>
+		{% endif %}
+		{{ form_start(form, {'attr': {'class': 'my-form-class'} }) }}
+		{{ form_widget(form) }}
+		{{ form_end(form) }}
+	</div>
+</div>
+{% endblock %}
+
+{%  block stylesheets %}
+	<style>
+	</style>
+{% endblock %}
+
+{% block javascripts %}
+	{{ tinymce_init() }}
+{% endblock %}

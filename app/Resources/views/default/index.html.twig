@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{%  block title %}Blog Public{% endblock %}
+{% block body %}
+	<div id="wrapper">
+		<div id="container">
+
+			<div id="pages">
+				{% for post in posts %}
+					{{ include('default/post_row.html.twig', { 'post': post }) }}
+				{% endfor %}
+			</div>
+
+			{{ include('admin/paging.html.twig', { 'paging_items': paging_items }) }}
+
+		</div>
+	</div>
+{% endblock %}
+
+{% block stylesheets %}
+	<style>
+	</style>
+{% endblock %}

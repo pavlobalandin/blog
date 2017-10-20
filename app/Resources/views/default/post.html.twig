@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{%  block title %}{{ post.title }} | Blog{% endblock %}
+{% block body %}
+	<div id="wrapper">
+		<div id="container">
+			<div class="post_view">
+				<div class="post_title">{{ post.title }}</div>
+				<div class="tags"><ul>{% for tag in post.tagsAsArray %}<li>{{ tag }}</li>{% endfor %}</ul></div>
+				<div class="post_body">{{ post.text|raw }}</a></div>
+				<div class="info">{{ post.date|date('Y-m-d') }} Views: {{ post.views }}</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
+{% block stylesheets %}
+	<style>
+	</style>
+{% endblock %}

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<title>{% block title %}Welcome!{% endblock %}</title>
+	<style>
+		body {
+			background: #F5F5F5;
+			font: 18px/1.5 sans-serif;
+		}
+
+		h1, h2 {
+			line-height: 1.2;
+			margin: 0 0 .5em;
+		}
+
+		h1.info, h2.info {
+			color: #00ff00;
+		}
+
+		h1.error, h2.error {
+			color: #ff0000;
+		}
+
+		#controls, #header {
+			display: block;
+			font-size: 75%;
+		}
+
+		#wrapper {
+			background: #FFF;
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+		}
+
+		#container {
+			padding: 2em;
+		}
+
+		#status {
+			margin-bottom: 2em;
+		}
+
+		#header {
+			float: right;
+			margin-right:100px;
+		}
+
+		#header span {
+			font-weight: bold;
+			padding-left: 1em;
+			padding-right: 1em;
+		}
+
+		#pagination li, #header li{
+			border:0;
+			margin:0;
+			padding: 0px;
+			font-size:12px;
+			list-style:none;
+			margin-right:5px;
+			float: left;
+			text-indent: 0px;
+		}
+
+		#pagination a{
+			border:solid 1px #9aafe5;
+			padding: 5px;
+			display: block;
+			text-decoration: none;
+		}
+
+		#pagination span {
+			display: block;
+			padding: 5px;
+			color: #ffffff;
+			font-weight:bold;
+			background:#2e6ab1;
+		}
+
+		#pagination a.active {
+			background:#2e6ab1;
+			color:#FFFFFF;
+			font-weight:bold;
+			display:block;
+			float:left;
+			padding:4px 6px;
+		}
+
+		form {
+			border-style: solid;
+			border-width: 1px;
+			border-color: #d9d9d9;
+			margin-bottom: 1.25em;
+			padding: 1.25em;
+			background: #f2f2f2;
+		}
+		select {
+			display: block;
+			padding-left: 6px;
+			padding-right: 28px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+
+		input, textarea {
+			background-color: #fff;
+			font-family: inherit;
+			border: 1px solid #ccc;
+			box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+			color: rgba(0,0,0,0.75);
+			display: block;
+			font-size: 0.875em;
+			margin: 0 0 1em 0;
+			padding: 0.5em;
+			width: 100%;
+		}
+
+		button, .button {
+			color: #fff;
+			background-color: #3caadc;
+			font-weight: 700;
+			padding-top: 0.875em;
+			padding-bottom: 0.813em;
+			padding-left: 0.5em;
+			padding-right: 0.5em;
+			box-shadow: none;
+			border: none;
+			text-decoration: none;
+		}
+
+		button:hover, button:focus, button.active, .button:hover, .button:focus, .button.active {
+			color: #fff;
+			background-color: #008bc4;
+			cursor: pointer;
+		}
+
+		div.post_view div.post_title, div.post_view a.post_title {
+			margin-bottom: 11px;
+			font-weight: bold;
+			text-decoration: none;
+		}
+
+		div.post_view .info {
+			font-size: 13px;
+			color: #5e6973;
+			line-height: 1.5;
+			margin-bottom: 1em;
+		}
+
+		div.post_view .post_body {
+			line-height: 1.56;
+			font-size: 16px;
+			overflow: hidden;
+		}
+
+		div.post_view .tags {
+			margin-top: 7px;
+			margin-bottom: 4px;
+			list-style: none;
+		}
+
+		div.post_view .tags li {
+			border: 1px solid #b0b0e2;
+			border-radius: 2px;
+			font-size: 12px;
+			color: #6667a3;
+			line-height: 16px;
+			padding: 3px 8px;
+			display: inline-block;
+			vertical-align: -1px;
+		}
+
+	</style>
+	{% block stylesheets %}{% endblock %}
+	<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
+<body>
+<div id="header">
+	<ul>
+		<li><a href="{{ path('homepage') }}">Home</a></li>
+		{% if is_granted("ROLE_USER") %}
+			<li><span>|</span><a href="{{ path('admin_home') }}">Administration</a></li>
+			<li><span>|</span>Logged in as <span>{{ app.user.username }}</span></li>
+			<li><span>|</span><a href="{{ path('logout') }}">Log out</a></li>
+		{% else %}
+			<li><span>|</span><a href="{{ path('login') }}">Log in</a></li>
+		{% endif %}
+	</ul>
+</div>
+
+{% block body %}{% endblock %}
+{% block javascripts %}{% endblock %}
+</body>
+</html>
