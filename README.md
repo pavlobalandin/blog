@@ -1,7 +1,7 @@
 Yet another Sandbox
 ====
 
-Project was created ro play with some basic behavior of Symfony3 framework.
+Project was created to play with Symfony3 framework basic behavior.
 
 The original task
 
@@ -65,9 +65,9 @@ $ chmod 777 var/sessions
 
 Copy database options from app\config\parameters.yml.dist to app\config\parameters.yml
 
-Update database connection options
+Update database connection options according to host configuration.
 
-Then create access to local database according to the configuration above
+Create access to local database according to the configuration above.
 
 ```bash
 mysql -u root -p localhost
@@ -79,13 +79,13 @@ grant all privileges on blog_demo.* to 'blog'@'%' identified by 'blog';
 flush privileges;
 ```
 
-## Creating default tables
+## Create default tables
 
 ```bash
 $ php bin/console doctrine:schema:update --force
 ```
 
-## Launching application
+## Launch application
 
 ```bash
 php bin/console server:run 0.0.0.0:8000
