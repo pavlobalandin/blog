@@ -18,7 +18,7 @@ class PageLister
 	/** @var int */
 	private $scrollSize;
 
-	public function __construct($router, $actionName, $scrollSize)
+	public function __construct(Router $router, $actionName, $scrollSize)
 	{
 		$this->router = $router;
 		$this->actionName = $actionName;

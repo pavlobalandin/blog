@@ -59,6 +59,8 @@ $ composer install
 $ chmod 777 var/logs
 $ chmod 777 var/cache
 $ chmod 777 var/sessions
+
+$ php bin/console assets:install web/
 ```
 
 ## Database options

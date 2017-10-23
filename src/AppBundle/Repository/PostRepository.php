@@ -7,6 +7,7 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
 
 class PostRepository extends EntityRepository
 {
+	/** @todo Move to global settings */
 	const DEFAULT_RESULT_PER_PAGE = 5;
 
 	/**

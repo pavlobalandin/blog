@@ -4,7 +4,6 @@ namespace AppBundle\Helper;
 
 class Html
 {
-
 	const BODY_TAG = 'body';
 	const DEFAULT_LENGTH = 25;
 
@@ -13,6 +12,11 @@ class Html
 	protected $maxLen = self::DEFAULT_LENGTH;
 	protected $toRemove = [];
 
+	/**
+	 * @param string $html
+	 * @param int $maxLen
+	 * @return string
+	 */
 	public static function trimPlainText($html, $maxLen = self::DEFAULT_LENGTH)
 	{
 		$openTag = '<' . self::BODY_TAG . '>';
@@ -26,6 +30,11 @@ class Html
 				);
 	}
 
+	/**
+	 * @param string $html
+	 * @param int $maxLen
+	 * @return string
+	 */
 	public static function trim($html, $maxLen = self::DEFAULT_LENGTH)
 	{
 
