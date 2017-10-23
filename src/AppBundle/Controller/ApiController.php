@@ -38,10 +38,13 @@ class ApiController extends Controller
 			$postRepository = $repository = $this->getDoctrine()
 				->getRepository(Post::class);
 
+			/** @var Post $post */
 			$post = $postRepository->findOneBy([
-				'id' => $id,
+				'id'       => $id,
 				'isActive' => 1,
 			]);
+
+			$postRepository->incrementViews($post->getUrl());
 		}
 
 		if ($post === NULL) {
