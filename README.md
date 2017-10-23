@@ -98,3 +98,13 @@ Now open http://localhost:8000/login
 user: admin, password: admin
 
 User is created in database automatically on the first launch.
+
+## API usage
+
+Get all posts 
+
+http://localhost:8000/api
+
+View one post
+
+http://localhost:8000/api/get?id=<ID>
