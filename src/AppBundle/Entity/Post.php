@@ -111,7 +111,7 @@ class Post
 	 */
 	public function getTruncatedText($maxLength = self::DEFAULT_HTML_LENGHT)
 	{
-		return Html::trim($this->text, $maxLength);
+		return Html::trimPlainText($this->text, $maxLength);
 	}
 
 	/**

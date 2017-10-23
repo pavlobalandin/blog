@@ -37,6 +37,21 @@ class PostRepository extends EntityRepository
  	}
 
 	/**
+	 * @param int $id
+	 * @return mixed
+	 */
+ 	public function changeState($id)
+	{
+		return $this
+			->createQueryBuilder('p')
+			->update($this->getEntityName(), 'p')
+			->set('p.isActive', '(CASE WHEN p.isActive = 1 THEN 0 ELSE 1 END)')
+			->where('p.id = :id')->setParameter('id', $id)
+			->getQuery()
+			->execute();
+	}
+
+	/**
 	 * @param int $pages
 	 * @param int $startPage
 	 * @param int $resultsPerPage

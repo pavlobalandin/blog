@@ -5,12 +5,28 @@ namespace AppBundle\Helper;
 class Html
 {
 
+	const BODY_TAG = 'body';
+	const DEFAULT_LENGTH = 25;
+
 	protected $reachedLimit = FALSE;
 	protected $totalLen = 0;
-	protected $maxLen = 25;
+	protected $maxLen = self::DEFAULT_LENGTH;
 	protected $toRemove = [];
 
-	public static function trim($html, $maxLen = 25)
+	public static function trimPlainText($html, $maxLen = self::DEFAULT_LENGTH)
+	{
+		$openTag = '<' . self::BODY_TAG . '>';
+		$closeTag = '</' . self::BODY_TAG . '>';
+		return preg_replace([
+						'/^' . preg_quote($openTag, '/') . '/',
+						'/' . preg_quote($closeTag, '/') . '$/',
+					],
+					['', ''],
+					self::trim($openTag . $html . $closeTag, $maxLen)
+				);
+	}
+
+	public static function trim($html, $maxLen = self::DEFAULT_LENGTH)
 	{
 
 		$dom = new \DOMDocument();
@@ -31,7 +47,7 @@ class Html
 			return $dom->saveHTML();
 		}
 
-		return $dom->saveHTML($dom->getElementsByTagName('body')->item(0));
+		return $dom->saveHTML($dom->getElementsByTagName(self::BODY_TAG)->item(0));
 	}
 
 	/**

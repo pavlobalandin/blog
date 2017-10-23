@@ -4,4 +4,5 @@
 	<td>{{ post.date|date('Y-m-d H:i:s')  }}</td>
 	<td>{{ post.views }}</td>
 	<td>{{ post.isActive }}</td>
+	<td><a href="{{ path('admin_list', {'id': post.id, 'page': page, 'activation': 1}) }}">{% if post.isActive %}deactivate{% else %}activate{% endif %}</a></td>
 </tr>

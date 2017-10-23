@@ -10,7 +10,8 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends Controller
 {
-	const ADMIN_USERNAME = 'admin';
+	/** @todo Move to configuration / setup tools */
+	const ADMIN_USERNAME         = 'admin';
 	const ADMIN_DEFAULT_PASSWORD = 'admin';
 
 	/**

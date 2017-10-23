@@ -12,9 +12,15 @@ use Symfony\Component\HttpFoundation\Request;
 
 class AdminController extends Controller
 {
+	/**
+	 * @todo Move to global settings
+	 */
 	const PAGE_SIZE   = 3;
 	const SCROLL_SIZE = 2;
 
+	/**
+	 * @todo Create localizations stuff
+	 */
 	const EDIT_LABEL = 'Edit';
 	const UPDATE_LABEL = 'Update';
 	const CREATE_LABEL = 'Create';
@@ -39,6 +45,12 @@ class AdminController extends Controller
 			->getRepository(Post::class);
 
 		$page = intval($request->query->get('page', 1));
+		$action = $request->query->get('activation');
+		$postId = $request->query->get('id');
+
+		if ($action && $postId) {
+			$postRepository->changeState($postId);
+		}
 
 		$pages = 0;
 		$posts = $postRepository->findAllPaginated($pages, $page - 1, self::PAGE_SIZE);
@@ -48,6 +60,7 @@ class AdminController extends Controller
 		return $this->render('admin/index.html.twig', [
 			'info'         => $info,
 			'posts'        => $posts,
+			'page'         => $page,
 			'paging_items' => $pageLister->getPagingItems($page, $pages),
 		]);
 

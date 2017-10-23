@@ -12,6 +12,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class DefaultController extends Controller
 {
+	/** @todo Move all constants to settings block in next iteration*/
 	const PAGE_SIZE   = 2;
 	const SCROLL_SIZE = 2;
 

@@ -1,5 +1,5 @@
 <div class="post_view">
 	<div class="post_title"><a href="{{ path('view', { 'url': post.url }) }}" class="post_title">{{ post.title }}</a></div>
-	<div class="post_body">{{ post.truncatedtext(maxLength)|raw }}</a></div>
+	<div class="post_body">{{ post.truncatedtext(maxLength)|raw }}</div>
 	<div class="info">Published: {{ post.date|date('Y-m-d') }} Views: {{ post.views }}</div>
 </div>
